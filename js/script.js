@@ -35,6 +35,7 @@ const thumbnailist = document.getElementById('thumbnailist');
 const listimages = [];
 const listitle = [];
 const listdescription = [];
+const listthumbnailist = [];
 activatelement = 0;
 
 images.forEach((image, i) => {
@@ -51,16 +52,20 @@ images.forEach((image, i) => {
     currenntdescription.innerHTML = `${image.description}`;
     currenntdescription.classList.add('ms2_position-absolute', 'ms_font-color2');
 
-    const currenntthumbnailist = crea
-    
+    const currennthumbnailist = document.createElement('div');
+    currennthumbnailist.classList.add('ms_circle', 'ms_mr-2');
+    thumbnailist.append(currennthumbnailist);
+
     listimages[i] = currenturl;
     listitle[i] = currenntitle;
     listdescription[i] = currenntdescription;
+    listthumbnailist[i] = currennthumbnailist;
 
     if(i===activatelement){
         currenturl.classList.add('ms_d-block');
         currenntitle.classList.add('ms_d-block');
         currenntdescription.classList.add('ms_d-block');
+        currennthumbnailist.classList.add('ms_bg');
     } else {
         currenntitle.classList.add('ms_d-none');
         currenturl.classList.add('ms_d-none');
@@ -83,6 +88,7 @@ buttonext.addEventListener('click', function(){
     listitle[activatelement].classList.remove('ms_d-block');
     listdescription[activatelement].classList.add('ms_d-none');
     listdescription[activatelement].classList.remove('ms_d-block');
+    listthumbnailist[activatelement].classList.remove('ms_bg');
     activatelement++;
     if(activatelement === images.length){
         activatelement = 0;
@@ -93,7 +99,7 @@ buttonext.addEventListener('click', function(){
         listitle[activatelement].classList.add('ms_d-block');
         listdescription[activatelement].classList.remove('ms_d-none');
         listdescription[activatelement].classList.add('ms_d-block');
-    
+        listthumbnailist[activatelement].classList.add('ms_bg');
 })
 
 buttonprew.addEventListener('click', function(){
@@ -104,6 +110,7 @@ buttonprew.addEventListener('click', function(){
     listitle[activatelement].classList.remove('ms_d-block');
     listdescription[activatelement].classList.add('ms_d-none');
     listdescription[activatelement].classList.remove('ms_d-block');
+    listthumbnailist[activatelement].classList.remove('ms_bg');
     activatelement--;
     if(activatelement === -1){
         activatelement = images.length-1;
@@ -114,5 +121,5 @@ buttonprew.addEventListener('click', function(){
         listitle[activatelement].classList.add('ms_d-block');
         listdescription[activatelement].classList.remove('ms_d-none');
         listdescription[activatelement].classList.add('ms_d-block');
-    
+        listthumbnailist[activatelement].classList.add('ms_bg');
 })

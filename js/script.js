@@ -31,26 +31,32 @@ const images = [
 const groupimages = document.getElementById('group-images');
 
 const listimages = [];
+const listitle = [];
 activatelement = 0;
 
 images.forEach((image, i) => {
-    console.log(image);
-    const currentimage = document.createElement('img');
+    
+    const currenturl = document.createElement('img');
+    currenturl.setAttribute('src', image.url);
 
-    currentimage.setAttribute('src', image.url);
+    const currenntitle = document.createElement('div');
+    currenntitle.innerHTML = `${image.title}`;
+    
+    currenturl.classList.add('width');
 
-    currentimage.classList.add('width');
-
-    listimages[i] = currentimage;
+    listimages[i] = currenturl;
+    listitle[i] = currenntitle;
 
     if(i===activatelement){
-        currentimage.classList.add('ms_d-block');
+        currenturl.classList.add('ms_d-block');
+        currenntitle.classList.add('ms_d-block');
     } else {
-        currentimage.classList.add('ms_d-none');
+        currenntitle.classList.add('ms_d-none');
+        currenturl.classList.add('ms_d-none');
     }
 
-    groupimages.append(currentimage);
-
+    groupimages.append(currenturl);
+    groupimages.append(currenntitle);
 })
 
 const buttonprew = document.getElementById('btn-prew');
@@ -60,11 +66,15 @@ buttonnext.addEventListener('click', function(){
     
     listimages[activatelement].classList.add('ms_d-none');
     listimages[activatelement].classList.remove('ms_d-block');
+    listitle[activatelement].classList.add('ms_d-none');
+    listitle[activatelement].classList.remove('ms_d-block');
     activatelement++;
     if(activatelement === images.length){
         activatelement = 0;
     } else {
         listimages[activatelement].classList.remove('ms_d-none');
         listimages[activatelement].classList.add('ms_d-block');
+        listitle[activatelement].classList.remove('ms_d-none');
+        listitle[activatelement].classList.add('ms_d-block');
     }
 })

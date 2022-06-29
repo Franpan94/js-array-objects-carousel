@@ -37,5 +37,10 @@
 .ms_font-color2{
     font-size: 30px;
     color: white;
-    text-align: left;
+}
+
+.ms_circle{
+    width: 50px;
+    height: 50px;
+    background-color: black;
 }

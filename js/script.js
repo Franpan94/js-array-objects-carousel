@@ -30,6 +30,7 @@ const images = [
 
 const groupimages = document.getElementById('group-images');
 groupimages.classList.add('ms_position-relative');
+const thumbnailist = document.getElementById('thumbnailist');
 
 const listimages = [];
 const listitle = [];
@@ -49,6 +50,8 @@ images.forEach((image, i) => {
     const currenntdescription = document.createElement('div');
     currenntdescription.innerHTML = `${image.description}`;
     currenntdescription.classList.add('ms2_position-absolute', 'ms_font-color2');
+
+    const currenntthumbnailist = crea
     
     listimages[i] = currenturl;
     listitle[i] = currenntitle;
@@ -70,9 +73,9 @@ images.forEach((image, i) => {
 })
 
 const buttonprew = document.getElementById('btn-prew');
-const buttonnext = document.getElementById('btn-next');
+const buttonext = document.getElementById('btn-next');
 
-buttonnext.addEventListener('click', function(){
+buttonext.addEventListener('click', function(){
     
     listimages[activatelement].classList.add('ms_d-none');
     listimages[activatelement].classList.remove('ms_d-block');
@@ -83,6 +86,27 @@ buttonnext.addEventListener('click', function(){
     activatelement++;
     if(activatelement === images.length){
         activatelement = 0;
+    } 
+        listimages[activatelement].classList.remove('ms_d-none');
+        listimages[activatelement].classList.add('ms_d-block');
+        listitle[activatelement].classList.remove('ms_d-none');
+        listitle[activatelement].classList.add('ms_d-block');
+        listdescription[activatelement].classList.remove('ms_d-none');
+        listdescription[activatelement].classList.add('ms_d-block');
+    
+})
+
+buttonprew.addEventListener('click', function(){
+    
+    listimages[activatelement].classList.add('ms_d-none');
+    listimages[activatelement].classList.remove('ms_d-block');
+    listitle[activatelement].classList.add('ms_d-none');
+    listitle[activatelement].classList.remove('ms_d-block');
+    listdescription[activatelement].classList.add('ms_d-none');
+    listdescription[activatelement].classList.remove('ms_d-block');
+    activatelement--;
+    if(activatelement === -1){
+        activatelement = images.length-1;
     } 
         listimages[activatelement].classList.remove('ms_d-none');
         listimages[activatelement].classList.add('ms_d-block');

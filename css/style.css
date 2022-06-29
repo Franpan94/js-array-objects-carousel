@@ -1,7 +1,8 @@
 
 
-.width{
-    width: 800px;
+.ms_width-height{
+    width: 950px;
+    height: 700px;
 }
 
 .ms_d-none{
@@ -10,4 +11,31 @@
 
 .ms_d-block{
     display: block;
+}
+
+.ms_position-relative{
+    position: relative;
+}
+
+.ms1_position-absolute{
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
+.ms2_position-absolute{
+    position: absolute;
+    top: 70px;
+    left: 30px;
+}
+
+.ms_font-color1{
+    font-size: 40px;
+    color: white;
+}
+
+.ms_font-color2{
+    font-size: 30px;
+    color: white;
+    text-align: left;
 }

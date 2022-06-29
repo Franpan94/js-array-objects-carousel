@@ -29,34 +29,44 @@ const images = [
 ];
 
 const groupimages = document.getElementById('group-images');
+groupimages.classList.add('ms_position-relative');
 
 const listimages = [];
 const listitle = [];
+const listdescription = [];
 activatelement = 0;
 
 images.forEach((image, i) => {
     
     const currenturl = document.createElement('img');
     currenturl.setAttribute('src', image.url);
+    currenturl.classList.add('ms_width-height');
 
     const currenntitle = document.createElement('div');
     currenntitle.innerHTML = `${image.title}`;
-    
-    currenturl.classList.add('width');
+    currenntitle.classList.add('ms1_position-absolute', 'ms_font-color1');
 
+    const currenntdescription = document.createElement('div');
+    currenntdescription.innerHTML = `${image.description}`;
+    currenntdescription.classList.add('ms2_position-absolute', 'ms_font-color2');
+    
     listimages[i] = currenturl;
     listitle[i] = currenntitle;
+    listdescription[i] = currenntdescription;
 
     if(i===activatelement){
         currenturl.classList.add('ms_d-block');
         currenntitle.classList.add('ms_d-block');
+        currenntdescription.classList.add('ms_d-block');
     } else {
         currenntitle.classList.add('ms_d-none');
         currenturl.classList.add('ms_d-none');
+        currenntdescription.classList.add('ms_d-none');
     }
 
     groupimages.append(currenturl);
     groupimages.append(currenntitle);
+    groupimages.append(currenntdescription);
 })
 
 const buttonprew = document.getElementById('btn-prew');
@@ -68,13 +78,17 @@ buttonnext.addEventListener('click', function(){
     listimages[activatelement].classList.remove('ms_d-block');
     listitle[activatelement].classList.add('ms_d-none');
     listitle[activatelement].classList.remove('ms_d-block');
+    listdescription[activatelement].classList.add('ms_d-none');
+    listdescription[activatelement].classList.remove('ms_d-block');
     activatelement++;
     if(activatelement === images.length){
         activatelement = 0;
-    } else {
+    } 
         listimages[activatelement].classList.remove('ms_d-none');
         listimages[activatelement].classList.add('ms_d-block');
         listitle[activatelement].classList.remove('ms_d-none');
         listitle[activatelement].classList.add('ms_d-block');
-    }
+        listdescription[activatelement].classList.remove('ms_d-none');
+        listdescription[activatelement].classList.add('ms_d-block');
+    
 })
